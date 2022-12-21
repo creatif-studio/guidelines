@@ -20,7 +20,6 @@ docker run -d --privileged --restart=unless-stopped -p 80:80 -p 443:443 -v /opt/
 
 ## Integration with Nginx Let's Encrypt (Optional)
 
-
 ```bash
 sudo apt install nginx
 sudo apt install 

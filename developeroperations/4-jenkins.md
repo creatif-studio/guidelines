@@ -5,4 +5,3 @@ Jenkins is an open source automation server which enables developers around the 
 ## Installation
 
 Make sure to login to rancher
-

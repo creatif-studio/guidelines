@@ -31,6 +31,7 @@ sudo certbot renew --dry-run
 ```
 
 Create cronjob
+
 ```bash
 crontab -e
 
@@ -38,7 +39,7 @@ crontab -e
 0 0 11 */3 * sudo bash /root/.scripts/cronssl.sh
 ```
 
-Create a new bash script in /root/.scripts/cronssl.sh
+Create a new bash script in `/root/.scripts/cronssl.sh`
 
 ```bash
 #!/usr/bin/env bash

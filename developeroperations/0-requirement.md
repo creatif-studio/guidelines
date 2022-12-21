@@ -1,6 +1,6 @@
 # Requirements
 
-Before we start, please create some of virtual machine base on the table below:
+Before we start, please create some virtual machines based on the table below:
 
 | No. |    Role   | Operating System | Version | CPU | RAM (GB) | DISK (GB) | DISK 2 (GB) | Public IP | Private IP |
 | --- | --------- | ---------------- | ------- | --- | ---      | --------- | ----------- | --------- | ---------- |

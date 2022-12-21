@@ -29,3 +29,29 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 sudo certbot --nginx
 sudo certbot renew --dry-run
 ```
+
+Create cronjob
+```bash
+crontab -e
+
+# insert this line to the cronjob
+0 0 11 */3 * sudo bash /root/.scripts/cronssl.sh
+```
+
+Create a new bash script in /root/.scripts/cronssl.sh
+
+```bash
+#!/usr/bin/env bash
+
+# stopping rancher
+docker stop rancher-270
+
+# renewing cert
+systemctl start nginx
+certbot renew --post-hook "systemctl reload nginx"
+ln -s /etc/letsencrypt/live/rch.muunship.com/* sslcerts/
+systemctl stop nginx
+
+# starting rancher
+docker start rancher-270
+```

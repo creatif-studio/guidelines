@@ -33,9 +33,5 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
 
 ```bash
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-```
-
-```bash
 sudo usermod -aG docker $(whoami)
 ```

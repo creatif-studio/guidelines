@@ -1,0 +1,42 @@
+version: "3.3"
+
+services:
+  registry:
+    container_name: registry
+    image: registry:2
+    restart: always
+    ports:
+      - "5000"
+    environment:
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry-Realm
+      REGISTRY_AUTH_HTPASSWD_PATH: /auth/registry.passwd
+      REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /data
+    volumes:
+      - ./registry-data:/data
+      - ./auth:/auth
+    networks:
+      - registry
+  nginx:
+    container_name: nginx
+    image: nginx:alpine
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./nginx/ssl/:/etc/nginx/ssl/
+    networks:
+      - registry
+  
+#Docker Networks
+networks:
+  registry:
+    driver: bridge
+
+#Volumes
+volumes:
+  registry-data:
+    driver: local

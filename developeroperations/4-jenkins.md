@@ -5,7 +5,7 @@ Jenkins is an open source automation server which enables developers to reliably
 You can setup with 2 methods:
 
 - Native: We can deploy manually with native app
-- Container: We can deploy jenkins with rancher
+- Kubernetes: We can deploy jenkins with rancher
 
 ## Native
 
@@ -38,7 +38,7 @@ Install jenkins
 sudo apt update -y && sudo apt install jenkins -y
 ```
 
-## Container
+## Kubernetes
 
 - Make sure login to rancher
 - Choose the cluster

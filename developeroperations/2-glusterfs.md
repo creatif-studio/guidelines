@@ -6,14 +6,20 @@ GlusterFS (Gluster File System) is an open source Distributed File System that c
 
 Please run this command line by line:
 
+Update the apt package index and install packages to allow apt to use a repository over HTTPS
+
 ```bash
 sudo apt install -y software-properties-common
 ```
+
+Add GlusterFS official GPG key
 
 ```bash
 sudo add-apt-repository ppa:gluster/glusterfs-7
 sudo apt update -y
 ```
+
+Install GlusterFS
 
 ```bash
 sudo apt install glusterfs-server
@@ -42,7 +48,7 @@ lsblk
 mkfs.xfs /dev/vdc
 ```
 
-Run this command for every virtual machine, and also change the number `1` to another numbers.
+Run this command in every virtual machine, and also change the number `1` to another numbers.
 
 ```bash
 mkdir -p /gluster/bricks/1
@@ -51,7 +57,7 @@ mount -a
 mkdir /gluster/bricks/1/brick
 ```
 
-Peer every gluster vm with this commands
+Peer every gluster vm with this commands (run only on gluster1)
 
 ```bash
 gluster peer probe gluster2
@@ -61,7 +67,7 @@ gluster peer probe gluster5
 gluster peer status
 ```
 
-Setup gluster replicated volumes
+Setup gluster replicated volumes (run only on gluster1)
 
 ```bash
 gluster volume create gfs \
@@ -79,10 +85,10 @@ gluster volume status gfs
 Setup security and authentication for this volume
 
 ```bash
-gluster volume set gfs auth.allow 192.168.2.111,192.168.112.112,192.168.2.113,192.168.2.114,192.168.2.115
+gluster volume set gfs auth.allow 192.168.2.111,192.168.2.112,192.168.2.113,192.168.2.114,192.168.2.115
 ```
 
-Mount the glusterFS volume where applications can access the files
+Mount the glusterFS volume where applications can access the files, run on every virtual machine
 
 ```bash
 echo 'localhost:/gfs /mnt glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0' >> /etc/fstab

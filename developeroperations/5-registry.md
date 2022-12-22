@@ -34,6 +34,7 @@ You can setup with 2 methods:
 
 ### Docker Compose
 
+- Create a new virtual machine
 - Go to this directory `terry/developeroperations/resources/registry`
 
 ```bash

@@ -2,9 +2,10 @@
 
 Jenkins is an open source automation server which enables developers to reliably build, test, and deploy their software.
 
-You can setup with 2 methods:
+You can setup with 3 methods:
 
 - Native: We can deploy manually with native app
+- Docker Compose: We can deploy with docker compose
 - Kubernetes: We can deploy jenkins with rancher
 
 ## Native
@@ -38,6 +39,15 @@ Install jenkins
 sudo apt update -y && sudo apt install jenkins -y
 ```
 
+### Docker Compose
+
+- Create a new virtual machine
+- Go to this directory `terry/developeroperations/resources/jenkins`
+
+```bash
+docker-compose up -d
+```
+
 ## Kubernetes
 
 - Make sure login to rancher
@@ -64,6 +74,8 @@ sudo apt update -y && sudo apt install jenkins -y
     - service type: `node port`
     - name: `jenkins-agent-port`
     - private service port: `50000`
+- Choose tab `container-0 -> security context`
+  - Choose `privileged: yes`
 - Choose tab `container-0 -> storage`
   - Choose `select volume -> jenkins-data` for jenkins data
     - mount point: `/var/jenkins_home`

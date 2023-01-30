@@ -76,6 +76,7 @@ docker-compose up -d
     - private service port: `50000`
 - Choose tab `container-0 -> security context`
   - Choose `privileged: yes`
+  - Insert `run as user ID: 0`
 - Choose tab `container-0 -> storage`
   - Choose `select volume -> jenkins-data` for jenkins data
     - mount point: `/var/jenkins_home`
